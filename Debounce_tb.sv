@@ -17,18 +17,19 @@ module Debounce_tb();
   forever #10 clk = ~clk;
  end
  initial begin
+ //aqui hay que ver en que tiempo nos sirve hacer el rebote
   pb_1 = 0;
-  #10;
+  #10000;
   pb_1=1;
-  #20;
+  #20000;
   pb_1 = 0;
-  #10;
+  #10000;
   pb_1=1;
-  #30; 
+  #30000; 
   pb_1 = 0;
-  #10;
+  #10000;
   pb_1=1;
-  #40;
+  #40000;
   pb_1 = 0;
   #10;
   pb_1=1;
