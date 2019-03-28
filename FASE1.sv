@@ -4,7 +4,7 @@ module FASE1 #(N = 32) (input logic [N-1:0]  A,B,
 
 //Comparar Quién es mayor y quién es menor								
 logic [N-1:0] mayor, menor;
-logic [7:0] diff_exponente;
+//logic [7:0] diff_exponente;
 
 
 Comparador#32 comparador(A,B,mayor,menor);
@@ -24,12 +24,12 @@ assign control = 4'b0001;
 	//Módulo para apiclar el complemento a 2 del exponente menor
 	Binterface#8 binterface(menor_exp,control,menor_exp_compl_2);
 	logic carryout;
-	logic carryin; assign carryin = 0;
+	logic carryin; assign carryin = 4'b0001;
 	//Full adder de 8 bits con carry de entrada de 1 para aplicar resta
-	//Fulladder(fsum, fcarry_out, a, b, c); 
-	Fulladder#8 restador(diff_exponente,carryout,mayor_exp,menor_exp_compl_2,carryin);
+	//Fulladder input logic[N-1:0] a,b,input logic cin,	output logic[N-1:0] s,output logic carryout
+	Fulladder#8 restador(mayor_exp,menor_exp_compl_2,carryin,diff_exp,carryout);
 	
-assign diff_exp = diff_exponente;
+//assign diff_exp = diff_exponente;
 assign Mayor = mayor;
 assign Menor = menor;
 	
