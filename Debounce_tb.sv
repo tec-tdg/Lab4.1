@@ -1,5 +1,5 @@
 module Debounce_tb();
-`timescale 1ns / 1ps
+`timescale 10ms / 10us
 // testbench verilog code for debouncing button without creating another clock
  // Inputs
  logic pb_1;
@@ -14,43 +14,77 @@ module Debounce_tb();
  );
  initial begin
   clk = 0;
-  forever #10 clk = ~clk;
+  forever #1000 clk = ~clk;
  end
  initial begin
- //aqui hay que ver en que tiempo nos sirve hacer el rebote
+ //se enciende el boton
   pb_1 = 0;
-  #10000;
+  #1000000000;
   pb_1=1;
-  #20000;
+  #20000000;
   pb_1 = 0;
-  #10000;
+  #10000000;
   pb_1=1;
-  #30000; 
+  #30000000; 
   pb_1 = 0;
-  #10000;
+  #10000000;
   pb_1=1;
-  #40000;
+  #40000000;
   pb_1 = 0;
-  #10;
+  #10000000;
   pb_1=1;
-  #30; 
+  #30000000; 
   pb_1 = 0;
-  #10;
+  #10000000;
   pb_1=1; 
-  #400; 
+  #400000000; 
   pb_1 = 0;
-  #10;
+  #10000000;
   pb_1=1;
-  #20;
+  #20000000;
   pb_1 = 0;
-  #10;
+  #10000000;
   pb_1=1;
-  #30; 
+  #30000000; 
   pb_1 = 0;
-  #10;
+ 
+  
+  //se apaga boton
+  
+  #1000000000;
+  pb_1=0;
+  
+
   pb_1=1;
-  #40;
-  pb_1 = 0; 
+  #20000000;
+  pb_1 = 0;
+  #10000000;
+  pb_1=1;
+  #30000000; 
+  pb_1 = 0;
+  #10000000;
+  pb_1=1;
+  #40000000;
+  pb_1 = 0;
+  #10000000;
+  pb_1=1;
+  #30000000; 
+  pb_1 = 0;
+  #10000000;
+  pb_1=1; 
+  #400000000; 
+  pb_1 = 0;
+  #10000000;
+  pb_1=1;
+  #20000000;
+  pb_1 = 0;
+  #10000000;
+  pb_1=1;
+  #30000000; 
+  pb_1 = 0;
+ 
+ 
+ 
  end 
       
 endmodule
