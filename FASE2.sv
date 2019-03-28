@@ -5,12 +5,12 @@ module FASE2  #(N = 32) (input logic [N-1:0]  mayor,menor,
 
 	
 	//Obtener la mantisa del menor
-	logic [7:0] mantisa_menor;
-	assign mantisa_menor = menor[30:23];
+	logic [22:0] mantisa_menor;
+	assign mantisa_menor = menor[22:0];
 
 	
-	//hacer corrimiento de datos input signed [N-1:0] _in,input [7:0] _delay,output [N-1:0] _out
-	shiftLeftArit shifter(mantisa_menor,diff_exp,menor_mantisa);
+	//hacer corrimiento de datos   _in, _delay,  _out
+	shiftRightArit#23 shifter(mantisa_menor,diff_exp,menor_mantisa);
 	
 	assign Mayor = mayor;
 	assign Menor = menor;

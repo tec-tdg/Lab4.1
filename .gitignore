@@ -1,0 +1,25 @@
+/*
+!/*.gitignore
+##
+!*.qpf
+!*.qsf
+!*.qws
+!*.bdf
+!*.vhd
+!*.v
+!*.ptf
+!*.bsf
+!**/class.ptf
+!*.tbd
+!*.sof
+## tbd
+
+!*.tcl
+/db
+/incremental_db
+/output_files
+/simulation
+
+*.qpf
+*.qsf
+*.qws
