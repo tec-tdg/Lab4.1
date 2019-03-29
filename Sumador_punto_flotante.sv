@@ -71,7 +71,7 @@ FASE1#32 fase1(salida_fase_0_a, salida_fase_0_b, mayor_fase_1, menor_fase_1,diff
 										 output logic [7:0] q_diff_expo  );*/
 
 logic [31:0] mayor_fase_2,menor_fase_2;
-logic [7:0]  dif_expo_fase_2;
+logic [22:0]  man_fase_2;
 Registro2#32 registro2( reset, 
                         clk, 
 								Estado_2,
@@ -80,7 +80,7 @@ Registro2#32 registro2( reset,
 								diff_expo_fase_1,
 								mayor_fase_2,
 								menor_fase_2,
-								dif_expo_fase_2);
+								man_fase_2);
 														 
 														 
 				
@@ -89,12 +89,12 @@ Registro2#32 registro2( reset,
  #(N = 32) (input logic [N-1:0]  mayor,menor, 
 								 input logic [7:0] diff_exp,
 								 output logic [N-1:0] Mayor,Menor,
-								 output logic [7:0]menor_mantisa);
+								 output logic [22:0]menor_mantisa);
 
 	*/
 logic [31:0] mayor_fase_3,menor_fase_3;
-logic [7:0] menor_exp_fase_3;
-FASE2#32 fase2(mayor_fase_2,menor_fase_2,dif_expo_fase_2,mayor_fase_3,menor_fase_3,menor_exp_fase_3);
+logic [22:0] menor_mantisa_fase_3;
+FASE2#32 fase2(mayor_fase_2,menor_fase_2,dif_expo_fase_2,mayor_fase_3,menor_fase_3,menor_mantisa_fase_3);
 
 		
 /*Se creae registro 3*/
@@ -102,27 +102,56 @@ FASE2#32 fase2(mayor_fase_2,menor_fase_2,dif_expo_fase_2,mayor_fase_3,menor_fase
 
 /* Registro3 #(parameter N=32)( input logic reset,clk,en,
 												 input logic d_X[N-1:0],d_Y[N-1:0],d_Exp[7:0],
-						output logic q_X[N-1:0],q_Y[N-1:0],q_Exp[7:0]);
+						output logic q_X[N-1:0],q_Y[N-1:0],q_man[22:0]);
 */
 
 
 
 
 logic [31:0] mayor_fase_4,menor_fase_4;
-logic [7:0] menor_exp_fase_4;
-Registro#32 registro3 (reset,clk,
+logic [22:0] menor_man_fase_4;
+Registro3#32 registro3 (reset,clk,
 								Estado_3,
 								mayor_fase_3,
 								menor_fase_3,
-								menor_exp_fase_3,
+								menor_mantisa_fase_3,
 								mayor_fase_4,
 								menor_fase_4,
-								menor_exp_fase_4);
-/**Se crea FASE3*/
+								menor_man_fase_4);
+/**Se crea FASE3
 
+
+FASE3 #(N = 32) ( input logic [N-1:0]  mayor,menor, 
+								 input logic [22:0] mantisa_menor_prima,
+								 
+								 output logic [N-1:0] Mayor,Menor,
+								 output logic [7:0] exponente_prima, 
+								 output logic [22:0] mantisa_resultado,
+								 output logic carry_out_mantisa,
+								 output logic carry_out_exp );*/
+
+								 
+logic [31:0] mayor_fase_5, menor_fase_5;
+logic [7:0] exponente_prima_fase_5;
+logic [22:0] mantisa_resultado_fase_5;
+logic carry_out_mantisa_fase_5;
+logic carry_out_exp_fase_5;
+							 
+FASE3#32 fase3 ( mayor_fase_4,
+					  menor_fase_4, 
+					  menor_man_fase_4,
+					  mayor_fase_5,
+					  menor_fase_5,
+					  exponente_prima_fase_5,
+					  mantisa_resultado_fase_5,
+					  carry_out_mantisa_fase_5,
+					  carry_out_exp_fase_5);
+								 
 /**Se crea Registro 4 */
 
-														 
+													
+											
+		
 														 
 														 
 														 
