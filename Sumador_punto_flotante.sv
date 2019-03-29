@@ -147,73 +147,98 @@ FASE3#32 fase3 ( mayor_fase_4,
 					  carry_out_mantisa_fase_5,
 					  carry_out_exp_fase_5);
 								 
-/**Se crea Registro 4 */
+/**Se crea Registro 4 
 
-													
+Registro4 #(parameter N=32)( input logic reset,clk,en,carry_in_man,carry_in_exp,
+												 input logic Mayor[N-1:0], Menor[N-1:0], Exp_in[7:0],Man_in[22:0],
+												 
+												 output logic Mayor_out[N-1:0],Menor_out[N-1:0],Exp_out[7:0],Man_out[22:0],
+												 output logic carry_exp_out,carry_man_out,);
+
+
+
+
+*/
+
+logic [31:0] mayor_fase_6, menor_fase_6;
+logic [7:0] exponente_prima_fase_6;
+logic [22:0] mantisa_resultado_fase_6;
+logic carry_out_mantisa_fase_6;
+logic carry_out_exp_fase_6;
+							 												
 											
-		
+Registro4#32 registro4 (reset,
+								clk,
+								Estado_4,
+								carry_out_mantisa_fase_5,
+								carry_out_exp_fase_5,
+								mayor_fase_5,
+								menor_fase_5,
+								exponente_prima_fase_5,
+								mantisa_resultado_fase_5,
+								
+								mayor_fase_6, 
+								menor_fase_6,
+								exponente_prima_fase_6,
+								mantisa_resultado_fase_6,
+								carry_out_exp_fase_6,
+								carry_out_mantisa_fase_6
+								
+								);
 														 
 														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 /*
-Se inicia la Fase 1 , se instancian las salidas para la siguiente fase 
-*/
+/*Se crea FASE4
 
-logic [31:0] Salida_fase1_Mayor,Salida_fase1_Menor;
-logic [7:0] Salida_fase1_DiferenciaExponentes;
-
-
-//input logic [N-1:0]  A,B,	output logic [N-1:0] Mayor,Menor, output logic [7:0]diff_exp );
-
+FASE4 #(N = 32) ( input logic [N-1:0] Mayor,Menor,
+								 input logic [7:0] exponente_prima, 
+								 input logic [22:0] mantisa_resultado,
+								 input logic carry_out_exp, 
+								 input logic carry_out_mantisa,
+								
+								output logic [N-1:0] Mayor_res,Menor_res,
+								 output logic float_number_sgn,
+								 output logic [7:0] float_number_exp,
+								 output logic [22:0] float_number_man,
+								 output logic overflow );
 
 
-FASE1#32 Primera_Fase(Numero_A,Numero_B,Salida_fase1_Mayor,Salida_fase1_Menor,Salida_fase1_DiferenciaExponentes);
+*/														 
+														 
+														 
+														 
+logic [31:0] mayor_final, menor_final;
 
 
-/*
-Se inicia la Fase 2 , se instancian las salidas para la siguiente fase 
-*/
-
-
-output logic [N-1:0] Salida_fase2_Mayor,Salida_fase2_Menor;
-output logic [7:0]Salida_fase2_menor_mantisa;
-
-
-/**
-		 input logic [N-1:0]  mayor,menor, 
-		 input logic [7:0] diff_exp,
-		 output logic [N-1:0] Mayor,Menor,
-		 output logic [7:0]menor_mantisa
-	**/
-	
-FASE2#32 Segunda_Fase(Salida_fase1_Mayor,Salida_fase1_Menor,Salida_fase1_DiferenciaExponentes,
-Salida_fase2_Mayor,Salida_fase2_Menor,Salida_fase2_menor_mantisa);
-
-
-
-
-
+							 
+FASE4#32 fase4 ( mayor_fase_6,
+					  menor_fase_6, 
+					  mantisa_resultado_fase_6,
+					  carry_out_exp_fase_6,
+					  carry_out_mantisa_fase_6,
+					  
+					  mayor_final,
+					  menor_final,
+					  Signo_suma,
+					  Exponente_suma,
+					  Mantisa_suma,
+					  Overflow
+					  );														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														 
+														
 														 
 
 endmodule
