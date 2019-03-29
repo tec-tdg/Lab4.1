@@ -1,8 +1,12 @@
 module Registro4 #(parameter N=32)( input logic reset,clk,en,carry_in_man,carry_in_exp,
-												 input logic Mayor[N-1:0], Menor[N-1:0], Exp_in[7:0],Man_in[22:0],
+												 input logic [N-1:0] Mayor, Menor, 
+												 input logic [7:0] Exp_in,
+												 input logic  [22:0] Man_in,
 												 
-												 output logic Mayor_out[N-1:0],Menor_out[N-1:0],Exp_out[7:0],Man_out[22:0],
-												 output logic carry_exp_out,carry_man_out,);
+												 output logic [N-1:0] Mayor_out, Menor_out,
+												  output logic [7:0] Exp_out,
+												 output logic [22:0] Man_out,
+												 output logic carry_exp_out,carry_man_out);
 
 
 //reset asincronico

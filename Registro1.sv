@@ -1,6 +1,6 @@
 module Registro1 #(parameter N=32)( input logic reset,clk,en,
-												 input logic d_A[N-1:0],d_B[N-1:0],
-												 output logic q_A[N-1:0],q_B[N-1:0]);
+												 input logic [N-1:0] d_A,d_B,
+												 output logic [N-1:0] q_A,q_B);
 
 
 //reset asincronico

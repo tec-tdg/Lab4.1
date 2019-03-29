@@ -1,4 +1,4 @@
-module Sumador_punto_flotante #(N = 32) ( input logic modo,
+module Sumador_punto_flotante #(N = 32) ( 
 														input logic clk,
 														input logic sw1, sw2,sw3,sw4, //switches
 														input logic reset, manual,
@@ -233,10 +233,7 @@ FASE4#32 fase4 ( mayor_fase_6,
 														 
 														 
 														 
-														 
-														 
-														 
-														 
+																						 
 														 
 														
 														 
