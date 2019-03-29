@@ -6,6 +6,7 @@ module FSM( input clk,
 				output logic ack,
 				output logic[1:0] out);
 
+				 /**Comments*/
 	logic[1:0] state;
 	logic[1:0] next_state;
 	
