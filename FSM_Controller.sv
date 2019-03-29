@@ -16,7 +16,7 @@ module FSM_Controller( input clk, rst,
 	always_comb 
 		case (state)
 		I: begin
-			if (start)
+			if (start || manual)
 				next_state = F1;
 			else
 				next_state = I;
@@ -68,7 +68,7 @@ module FSM_Controller( input clk, rst,
 		end
 
 		default: begin
-			if (start)
+			if (start || manual)
 				next_state = F1;
 			else
 				next_state = I;

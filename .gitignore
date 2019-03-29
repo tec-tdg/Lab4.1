@@ -1,20 +1,8 @@
 /*
 !/*.gitignore
 ##
-!*.qpf
-!*.qsf
-!*.qws
-!*.bdf
-!*.vhd
-!*.v
-!*.ptf
-!*.bsf
-!**/class.ptf
-!*.tbd
-!*.sof
-## tbd
+*.qpf
 
-!*.tcl
 /db
 /incremental_db
 /output_files
