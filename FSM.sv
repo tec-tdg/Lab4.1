@@ -7,6 +7,7 @@ module FSM( input clk,
 				output logic[1:0] out);
 
 				 /**Comments*/
+				 
 	logic[1:0] state;
 	logic[1:0] next_state;
 	
@@ -17,6 +18,7 @@ module FSM( input clk,
 	end
 		
 	//combinational logic
+	
 	always_comb begin
 		case (state)
 		2'b00: begin
