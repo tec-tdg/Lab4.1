@@ -7,7 +7,7 @@ module Registro2 #(parameter N=32)( input logic reset,clk,en,
 
 //reset asincronico
 
-always_ff@(posedge clk,posedge reset)												 
+always_ff@(negedge clk,posedge reset)												 
 		if (reset) begin q_Ma<=32'b0; q_Me<=32'b0; q_diff_expo <=8'b0; end
 		else if(en) begin q_Ma<=d_Ma; q_Me<=d_Me; q_diff_expo <= d_diff_expo; end
 			

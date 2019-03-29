@@ -8,7 +8,8 @@ module Sumador_punto_flotante #(N = 32) (
 														output logic Overflow, // overflow de la suma 
 
 														output logic [7:0] Exponente_suma, // exponente del resultado
-														output logic [22:0] Mantisa_suma); // la mantisa la mantisa final 
+														output logic [22:0] Mantisa_suma,
+														output logic [6:0] Hex1, Hex2, Hex3, Hex4, Hex5, Hex6); // la mantisa la mantisa final 
 
 logic [31:0] entrada_a;
 assign entrada_a = 32'b0_00000110_00000000010000000000000; 
@@ -20,6 +21,7 @@ logic [31:0] salida_fase_0_a, salida_fase_0_b;
 
 //Salidas del debounce, que serán usadas como entrada a la FSM
 logic output_sw1,output_sw2,output_sw3,output_sw4;
+
 
 														
 /**Debuncer : Debounce(input  pb_1,clk,output  pb_out);*/
@@ -138,6 +140,10 @@ logic [7:0] exponente_prima_fase_5;
 logic [22:0] mantisa_resultado_fase_5;
 logic carry_out_mantisa_fase_5;
 logic carry_out_exp_fase_5;
+
+//Se utiliza para dar una salida al decodificador 
+
+logic [7:0] deco_exponente;
 							 
 FASE3#32 fase3 ( mayor_fase_4,
 					  menor_fase_4, 
@@ -149,6 +155,8 @@ FASE3#32 fase3 ( mayor_fase_4,
 					  mantisa_resultado_fase_5,
 					  carry_out_mantisa_fase_5,
 					  carry_out_exp_fase_5);
+					  
+assign deco_exponente = exponente_prima_fase_5;
 								 
 /**Se crea Registro 4 
 
@@ -195,7 +203,6 @@ Registro4#32 registro4 (reset,
 														 
 														 
 /*Se crea FASE4
-
 FASE4 #(N = 32) ( input logic [N-1:0] Mayor,Menor,
 								 input logic [7:0] exponente_prima, 
 								 input logic [22:0] mantisa_resultado,
@@ -206,7 +213,6 @@ FASE4 #(N = 32) ( input logic [N-1:0] Mayor,Menor,
 								 output logic [7:0] float_number_exp,
 								 output logic [22:0] float_number_man,
 								 output logic overflow ); 
-
 
 */														 
 														 
@@ -230,19 +236,46 @@ FASE4#32 fase4 ( mayor_fase_6,
 					  Mantisa_suma,
 					  Overflow
 					  );														 
+										 														 
 														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-														 
-																						 
-														 
-														
-														 
+
+logic [6:0] Entrada_Deco1;
+logic [6:0] Entrada_Deco2;
+logic [6:0] Entrada_Deco3;
+logic [6:0] Entrada_Deco4;
+logic [6:0] Entrada_Deco5;
+logic [6:0] Entrada_Deco6;
+
+always_ff @(posedge clk) begin
+
+if(Estado_3 ==1) begin Entrada_Deco1 <= Exponente_suma[7:4];
+							   Entrada_Deco2 <= Exponente_suma[3:0];
+								Entrada_Deco3  <= 4'b0000;
+								Entrada_Deco4  <= 4'b0000;
+								Entrada_Deco5  <= 4'b0000;
+								Entrada_Deco6 <= 4'b0000;
+								
+								end
+
+/* Decoder Ss2(Exponente_suma[3:0],Hex2); Decoder Ss3 (4'b0000,Hex3); Decoder Ss4 (4'b0000,Hex4); Decoder Ss5 (4'b0000,Hex5); Decoder Ss6 (4'b0000,Hex6);	*/													 							
+
+
+else begin  Entrada_Deco1 <= Mantisa_suma[22:20];
+				Entrada_Deco2 <= Mantisa_suma[19:16]; 
+				Entrada_Deco3  <= Mantisa_suma[15:12];
+				Entrada_Deco4  <= Mantisa_suma[11:8];
+				Entrada_Deco5  <= Mantisa_suma[7:4];
+				Entrada_Deco6 <= Mantisa_suma[3:0];
+				
+				end
+				
+end 				
+Decoder Ss1 (Entrada_Deco1,Hex6); 
+Decoder Ss2 (Entrada_Deco2,Hex5); 
+Decoder Ss3 (Entrada_Deco3,Hex4); 
+Decoder Ss4 (Entrada_Deco4,Hex3); 
+Decoder Ss5 (Entrada_Deco5,Hex2); 
+Decoder Ss6 (Entrada_Deco6,Hex1);														 
+								
 
 endmodule
