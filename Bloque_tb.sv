@@ -8,8 +8,7 @@ module Bloque_tb();
 								output logic [N-1:0] Mayor,Menor, output logic [7:0]diff_exp );*/
 								
 								
-	assign Operando_a = 32'b0_00000110_00000000010000000000000; 
-	assign Operando_b = 32'b0_00000001_00000000000000001000000;
+	
 								
 	FASE1#32 dutFase1(Operando_a, Operando_b,Mayor_F1,Menor_F1,diff_exp_F1);
 	
@@ -42,8 +41,48 @@ module Bloque_tb();
 	logic [22:0] mantisa_resultado_F3;
 	logic carry_out_mantisa_F3, carry_out_exp_F3;
 	
-	FASE3#32(Mayor_F2,Menor_F2,menor_mantisa_F2,Mayor_F3,Menor_F3,exponente_prima_F3,mantisa_resultado_F3,carry_out_mantisa_F3, carry_out_exp_F3);
+	FASE3#32 fase3(Mayor_F2,Menor_F2,menor_mantisa_F2,Mayor_F3,Menor_F3,exponente_prima_F3,mantisa_resultado_F3,carry_out_mantisa_F3, carry_out_exp_F3);
 	
-								
+			
+
+	/*Fase 4
+		FASE4 #(N = 32) ( input logic [N-1:0] Mayor,Menor,
+								 input logic [7:0] exponente_prima, 
+								 input logic [22:0] mantisa_resultado,
+								 input logic carry_out_exp, 
+								 input logic carry_out_mantisa,
+								 output logic [N-1:0] Mayor_res,Menor_res,
+								 output logic float_number_sgn,
+								 output logic [7:0] float_number_exp,
+								 output logic [22:0] float_number_man,
+								 output logic overflow );
+	
+	*/
+	
+	logic [31:0]  Mayor_res_F4,Menor_res_F4;
+	logic float_number_sgn_F4;
+	logic [7:0] float_number_expo_F4;
+	logic [22:0] float_number_man_F4;
+	logic overflow_F4;
+	FASE4#32  fase4(Mayor_F3,
+				  Menor_F3,
+				  exponente_prima_F3,
+				  mantisa_resultado_F3,
+				  carry_out_mantisa_F3,
+				  carry_out_exp_F3,
+				  Mayor_res_F4,
+				  Menor_res_F4,
+				  float_number_sgn_F4,
+				  float_number_expo_F4,
+				  float_number_man_F4,
+				  overflow_F4);
+				  
+				  
+	  initial begin
+			assign Operando_a = 32'b0_00000110_00000000010000000000000; 
+			assign Operando_b = 32'b0_00000001_00000000000000001000000;
+			assert(overflow_F4 == 0) $display("Éxito"); else $error("Error");
+	  end
+				
 
 endmodule
