@@ -2,7 +2,7 @@ module Debounce(input  pb_1,clk,output  pb_out);
 logic slow_clk;
 logic Q1,Q2,Q2_bar;
 
-clock_div u1(clk,slow_clk);
+Freq_div u1(clk,slow_clk);
 my_dff d1(slow_clk, pb_1,Q1 );
 my_dff d2(slow_clk, Q1,Q2);
 assign Q2_bar = ~Q2;

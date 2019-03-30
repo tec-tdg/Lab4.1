@@ -1,5 +1,5 @@
 module Sumador_punto_flotante #(N = 32) ( 
-														input logic clk,
+														input logic clk_maquina,
 														input logic sw1, sw2,sw3,sw4, //switches
 														input logic reset, manual,
 														
@@ -22,7 +22,10 @@ logic [31:0] salida_fase_0_a, salida_fase_0_b;
 //Salidas del debounce, que serán usadas como entrada a la FSM
 logic output_sw1,output_sw2,output_sw3,output_sw4;
 
+logic clk;
 
+
+Freq_div Reloj(clk_maquina,clk);
 														
 /**Debuncer : Debounce(input  pb_1,clk,output  pb_out);*/
 Debounce debounce_1(sw1,clk,output_sw1);
