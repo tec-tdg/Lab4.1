@@ -1,4 +1,4 @@
-module Debounce(input  pb_1,clk,output  pb_out);
+module Debounce(input pb_1,clk,output  pb_out);
 logic slow_clk;
 logic Q1,Q2,Q2_bar;
 
@@ -13,7 +13,7 @@ endmodule
 // D-flip-flop for debouncing module 
 module my_dff(input DFF_CLOCK, D, output logic Q);
 
-    always @ (posedge DFF_CLOCK) begin
+    always @ (negedge DFF_CLOCK) begin
         Q <= D;
     end
 

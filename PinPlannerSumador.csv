@@ -1,0 +1,107 @@
+# Copyright (C) 2018  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel FPGA IP License Agreement, or other applicable license
+# agreement, including, without limitation, that your use is for
+# the sole purpose of programming logic devices manufactured by
+# Intel and sold by Intel or its authorized distributors.  Please
+# refer to the applicable agreement for further details.
+
+# Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+# File: C:\Users\Juliana\Documents\GitHub\Lab4.2\PinPlannerSumador.csv
+# Generated on: Sat Mar 30 20:54:32 2019
+
+# Note: The column header names should not be changed if you wish to import this .csv file into the Quartus Prime software.
+
+To,Direction,Location,I/O Bank,VREF Group,Fitter Location,I/O Standard,Reserved,Current Strength,Slew Rate,Differential Pair,Transceiver Analog Settings Protocol,VCCR_GXB/VCCT_GXB Voltage,Transceiver I/O Pin Termination,Transceiver Dedicated Refclk Pin Termination,Transmitter Common Mode Driver Voltage,Transmitter Slew Rate Control,Transmitter Differential Output Voltage,Receiver Buffer Common Mode Voltage,Strict Preservation
+Estado_1,Output,PIN_V16,4A,B4A_N0,PIN_AG7,,,,,,,,,,,,,,
+Estado_2,Output,PIN_W16,4A,B4A_N0,PIN_AA12,,,,,,,,,,,,,,
+Estado_3,Output,PIN_V17,4A,B4A_N0,PIN_AF8,,,,,,,,,,,,,,
+Estado_4,Output,PIN_V18,4A,B4A_N0,PIN_AH2,,,,,,,,,,,,,,
+Exponente_suma[7],Output,,,,PIN_AH13,,,,,,,,,,,,,,
+Exponente_suma[6],Output,,,,PIN_C13,,,,,,,,,,,,,,
+Exponente_suma[5],Output,,,,PIN_J10,,,,,,,,,,,,,,
+Exponente_suma[4],Output,,,,PIN_K14,,,,,,,,,,,,,,
+Exponente_suma[3],Output,,,,PIN_H8,,,,,,,,,,,,,,
+Exponente_suma[2],Output,,,,PIN_AJ2,,,,,,,,,,,,,,
+Exponente_suma[1],Output,,,,PIN_AH5,,,,,,,,,,,,,,
+Exponente_suma[0],Output,,,,PIN_AD7,,,,,,,,,,,,,,
+Hex1[6],Output,PIN_AE26,5A,B5A_N0,PIN_G11,,,,,,,,,,,,,,
+Hex1[5],Output,PIN_AE27,5A,B5A_N0,PIN_AC29,,,,,,,,,,,,,,
+Hex1[4],Output,PIN_AE28,5A,B5A_N0,PIN_V16,,,,,,,,,,,,,,
+Hex1[3],Output,PIN_AG27,5A,B5A_N0,PIN_F9,,,,,,,,,,,,,,
+Hex1[2],Output,PIN_AF28,5A,B5A_N0,PIN_AA28,,,,,,,,,,,,,,
+Hex1[1],Output,PIN_AG28,5A,B5A_N0,PIN_AG12,,,,,,,,,,,,,,
+Hex1[0],Output,PIN_AH28,5A,B5A_N0,PIN_AF18,,,,,,,,,,,,,,
+Hex2[6],Output,PIN_AJ29,5A,B5A_N0,PIN_AE18,,,,,,,,,,,,,,
+Hex2[5],Output,PIN_AH29,5A,B5A_N0,PIN_G8,,,,,,,,,,,,,,
+Hex2[4],Output,PIN_AH30,5A,B5A_N0,PIN_AK6,,,,,,,,,,,,,,
+Hex2[3],Output,PIN_AG30,5A,B5A_N0,PIN_B8,,,,,,,,,,,,,,
+Hex2[2],Output,PIN_AF29,5A,B5A_N0,PIN_AE24,,,,,,,,,,,,,,
+Hex2[1],Output,PIN_AF30,5A,B5A_N0,PIN_G12,,,,,,,,,,,,,,
+Hex2[0],Output,PIN_AD27,5A,B5A_N0,PIN_E2,,,,,,,,,,,,,,
+Hex3[6],Output,PIN_AB23,5A,B5A_N0,PIN_AA14,,,,,,,,,,,,,,
+Hex3[5],Output,PIN_AE29,5B,B5B_N0,PIN_G7,,,,,,,,,,,,,,
+Hex3[4],Output,PIN_AD29,5B,B5B_N0,PIN_AD27,,,,,,,,,,,,,,
+Hex3[3],Output,PIN_AC28,5B,B5B_N0,PIN_AF13,,,,,,,,,,,,,,
+Hex3[2],Output,PIN_AD30,5B,B5B_N0,PIN_AG13,,,,,,,,,,,,,,
+Hex3[1],Output,PIN_AC29,5B,B5B_N0,PIN_AK13,,,,,,,,,,,,,,
+Hex3[0],Output,PIN_AC30,5B,B5B_N0,PIN_E6,,,,,,,,,,,,,,
+Hex4[6],Output,PIN_AD26,5A,B5A_N0,PIN_B13,,,,,,,,,,,,,,
+Hex4[5],Output,PIN_AC27,5A,B5A_N0,PIN_AD9,,,,,,,,,,,,,,
+Hex4[4],Output,PIN_AD25,5A,B5A_N0,PIN_AF16,,,,,,,,,,,,,,
+Hex4[3],Output,PIN_AC25,5A,B5A_N0,PIN_AC22,,,,,,,,,,,,,,
+Hex4[2],Output,PIN_AB28,5B,B5B_N0,PIN_AJ19,,,,,,,,,,,,,,
+Hex4[1],Output,PIN_AB25,5A,B5A_N0,PIN_Y16,,,,,,,,,,,,,,
+Hex4[0],Output,PIN_AB22,5A,B5A_N0,PIN_AE17,,,,,,,,,,,,,,
+Hex5[6],Output,PIN_AA24,5A,B5A_N0,PIN_E1,,,,,,,,,,,,,,
+Hex5[5],Output,PIN_Y23,5A,B5A_N0,PIN_AG8,,,,,,,,,,,,,,
+Hex5[4],Output,PIN_Y24,5A,B5A_N0,PIN_H15,,,,,,,,,,,,,,
+Hex5[3],Output,PIN_W22,5A,B5A_N0,PIN_A11,,,,,,,,,,,,,,
+Hex5[2],Output,PIN_W24,5A,B5A_N0,PIN_AD19,,,,,,,,,,,,,,
+Hex5[1],Output,PIN_V23,5A,B5A_N0,PIN_AE16,,,,,,,,,,,,,,
+Hex5[0],Output,PIN_W25,5B,B5B_N0,PIN_AF5,,,,,,,,,,,,,,
+Hex6[6],Output,PIN_V25,5B,B5B_N0,PIN_W21,,,,,,,,,,,,,,
+Hex6[5],Output,PIN_AA28,5B,B5B_N0,PIN_AA18,,,,,,,,,,,,,,
+Hex6[4],Output,PIN_Y27,5B,B5B_N0,PIN_AD24,,,,,,,,,,,,,,
+Hex6[3],Output,PIN_AB27,5B,B5B_N0,PIN_A10,,,,,,,,,,,,,,
+Hex6[2],Output,PIN_AB26,5A,B5A_N0,PIN_W16,,,,,,,,,,,,,,
+Hex6[1],Output,PIN_AA26,5B,B5B_N0,PIN_A4,,,,,,,,,,,,,,
+Hex6[0],Output,PIN_AA25,5A,B5A_N0,PIN_AK12,,,,,,,,,,,,,,
+Mantisa_suma[22],Output,,,,PIN_E9,,,,,,,,,,,,,,
+Mantisa_suma[21],Output,,,,PIN_AF28,,,,,,,,,,,,,,
+Mantisa_suma[20],Output,,,,PIN_E3,,,,,,,,,,,,,,
+Mantisa_suma[19],Output,,,,PIN_AK28,,,,,,,,,,,,,,
+Mantisa_suma[18],Output,,,,PIN_AJ21,,,,,,,,,,,,,,
+Mantisa_suma[17],Output,,,,PIN_AC23,,,,,,,,,,,,,,
+Mantisa_suma[16],Output,,,,PIN_W24,,,,,,,,,,,,,,
+Mantisa_suma[15],Output,,,,PIN_AJ25,,,,,,,,,,,,,,
+Mantisa_suma[14],Output,,,,PIN_AH18,,,,,,,,,,,,,,
+Mantisa_suma[13],Output,,,,PIN_AG6,,,,,,,,,,,,,,
+Mantisa_suma[12],Output,,,,PIN_D11,,,,,,,,,,,,,,
+Mantisa_suma[11],Output,,,,PIN_D9,,,,,,,,,,,,,,
+Mantisa_suma[10],Output,,,,PIN_C10,,,,,,,,,,,,,,
+Mantisa_suma[9],Output,,,,PIN_AD20,,,,,,,,,,,,,,
+Mantisa_suma[8],Output,,,,PIN_J7,,,,,,,,,,,,,,
+Mantisa_suma[7],Output,,,,PIN_AH24,,,,,,,,,,,,,,
+Mantisa_suma[6],Output,,,,PIN_AG10,,,,,,,,,,,,,,
+Mantisa_suma[5],Output,,,,PIN_AC27,,,,,,,,,,,,,,
+Mantisa_suma[4],Output,,,,PIN_AH10,,,,,,,,,,,,,,
+Mantisa_suma[3],Output,,,,PIN_A6,,,,,,,,,,,,,,
+Mantisa_suma[2],Output,,,,PIN_AJ1,,,,,,,,,,,,,,
+Mantisa_suma[1],Output,,,,PIN_AG5,,,,,,,,,,,,,,
+Mantisa_suma[0],Output,,,,PIN_E7,,,,,,,,,,,,,,
+Overflow,Output,PIN_Y21,5A,B5A_N0,PIN_AG2,,,,,,,,,,,,,,
+Signo_suma,Output,PIN_W21,5A,B5A_N0,PIN_G15,,,,,,,,,,,,,,
+clk_maquina,Input,PIN_AA16,4A,B4A_N0,PIN_AB27,,,,,,,,,,,,,,
+manual,Input,PIN_AB12,3A,B3A_N0,PIN_AB12,2.5 V,,,,,,,,,,,,,
+reset,Input,PIN_AC12,3A,B3A_N0,PIN_AC12,2.5 V,,,,,,,,,,,,,
+sw1,Input,PIN_AF9,3A,B3A_N0,PIN_AF10,2.5 V,,,,,,,,,,,,,
+sw2,Input,PIN_AF10,3A,B3A_N0,PIN_AD11,2.5 V,,,,,,,,,,,,,
+sw3,Input,PIN_AD11,3A,B3A_N0,PIN_AD12,2.5 V,,,,,,,,,,,,,
+sw4,Input,PIN_AD12,3A,B3A_N0,PIN_AG1,,,,,,,,,,,,,,
