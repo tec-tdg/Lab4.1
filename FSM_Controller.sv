@@ -38,7 +38,7 @@ module FSM_Controller( input clk, rst,
 			en2 = 0;
 			en3 = 0;
 			en4 = 0;
-			#3;
+			#2;
 			led1 = 1;
 			led2 = 0;
 			led3 = 0;
@@ -53,7 +53,7 @@ module FSM_Controller( input clk, rst,
 			en2 = 1;
 			en3 = 0;
 			en4 = 0;
-			#3;
+			#2;
 			led1 = 1;
 			led2 = 1;
 			led3 = 0;
@@ -68,7 +68,7 @@ module FSM_Controller( input clk, rst,
 			en2 = 0;
 			en3 = 1;
 			en4 = 0;
-			#3;
+			#2;
 			led1 = 1;
 			led2 = 1;
 			led3 = 1;
@@ -79,7 +79,7 @@ module FSM_Controller( input clk, rst,
 			en2 = 0;
 			en3 = 0;
 			en4 = 1;
-			#3;
+			#2;
 			led1 = 1;
 			led2 = 1;
 			led3 = 1;

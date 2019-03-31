@@ -13,7 +13,7 @@ endmodule
 // D-flip-flop for debouncing module 
 module my_dff(input DFF_CLOCK, D, output logic Q);
 
-    always @ (negedge DFF_CLOCK) begin
+    always @ (posedge DFF_CLOCK) begin
         Q <= D;
     end
 

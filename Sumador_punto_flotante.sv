@@ -1,7 +1,7 @@
 module Sumador_punto_flotante #(N = 32) ( 
 														input logic clk_maquina,
 														input logic sw1, sw2,sw3, //switches
-														input logic reset, manual,auto, // modos
+														input logic reset, manual,auto3, // modos
 														
 														output logic Signo_suma, //signo del resultado
 														output logic Estado_1,Estado_2,Estado_3,Estado_4,//Estados de la máquina de estados
@@ -20,7 +20,7 @@ assign entrada_b = 32'b0_00000001_00000000000000001000000;
 logic [31:0] salida_fase_0_a, salida_fase_0_b;
 
 //Salidas del debounce, que serán usadas como entrada a la FSM
-logic output_sw1,output_sw2,output_sw3,output_auto,output_manual,output_reset;
+logic output_sw1,output_sw2,output_sw3,output_auto,output_manual,output_reset,output_start;
 
 logic clk;
 
@@ -28,32 +28,28 @@ logic clk;
 Freq_div Reloj(clk_maquina,clk);
 														
 /**Debuncer : Debounce(input  pb_1,clk,output  pb_out);*/
-Debounce debounce_1(sw1,clk,output_sw1);
+/*Debounce debounce_1(sw1,clk,output_sw1);
 Debounce debounce_2(sw2,clk,output_sw2);
 Debounce debounce_3(sw3,clk,output_sw3);
-Debounce debounce_4(auto,clk,output_auto);
+Debounce debounce_4(auto3,clk,output_auto);
 Debounce debounce_5(manual,clk,output_manual);
-Debounce debounce_6(reset,clk,output_reset);
+Debounce debounce_6(reset,clk,output_reset);*/
+
 													
 													
-														
-														 
 
 /**Máquina de estados 
 
-module FSM_Controller( input clk, rst,
+FSM_Controller( input clk, rst,
 						 input logic auto, manual, sw1, sw2, sw3,
-						 output logic led1, led2, led3, led4, en1, en2, en3, en4);
-
-
+						 output logic led1, led2, led3, led4, en1, en2, en3, en4)
 */
 
+FSM_Controller fsm(  clk, reset,
+						 auto3, manual, sw1, sw2, sw3,
+						 Estado_1, Estado_2, Estado_3, Estado_4, en1, en2, en3, en4);
 
-FSM_Controller fsm_controller(clk,output_reset,output_auto,
-										output_manual,output_sw1,output_sw2,output_sw3,
-										Estado_1,Estado_2, Estado_3, Estado_4, en1, en2, en3, en4);
-
-														 
+					 
 logic en1,en2,en3,en4;
 														 
 /*Se crea Reistro 1    en:Estado_1
