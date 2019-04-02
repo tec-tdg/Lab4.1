@@ -1,7 +1,7 @@
 module Sumador_punto_flotante #(N = 32) ( 
 														input logic clk_maquina,
 														input logic sw1, sw2,sw3, //switches
-														input logic reset, manual,auto3, // modos
+														input logic reset, manual,start, // modos
 														
 														output logic Signo_suma, //signo del resultado
 														output logic Estado_1,Estado_2,Estado_3,Estado_4,//Estados de la máquina de estados
@@ -28,12 +28,12 @@ logic clk;
 Freq_div Reloj(clk_maquina,clk);
 														
 /**Debuncer : Debounce(input  pb_1,clk,output  pb_out);*/
-/*Debounce debounce_1(sw1,clk,output_sw1);
-Debounce debounce_2(sw2,clk,output_sw2);
-Debounce debounce_3(sw3,clk,output_sw3);
-Debounce debounce_4(auto3,clk,output_auto);
-Debounce debounce_5(manual,clk,output_manual);
-Debounce debounce_6(reset,clk,output_reset);*/
+/*Debounce debounce_1(sw1,clk_maquina,output_sw1);
+Debounce debounce_2(sw2,clk_maquina,output_sw2);
+Debounce debounce_3(sw3,clk_maquina,output_sw3);
+Debounce debounce_4(auto3,clk_maquina,output_auto);
+Debounce debounce_5(manual,clk_maquina,output_manual);
+Debounce debounce_6(reset,clk_maquina,output_reset);*/
 
 													
 													
@@ -41,13 +41,14 @@ Debounce debounce_6(reset,clk,output_reset);*/
 /**Máquina de estados 
 
 FSM_Controller( input clk, rst,
-						 input logic auto, manual, sw1, sw2, sw3,
-						 output logic led1, led2, led3, led4, en1, en2, en3, en4)
+						 input logic start, manual, sw1, sw2, sw3,
+						 output logic en1,en2,en3,en4,led1, led2, led3, led4);
+
 */
 
 FSM_Controller fsm(  clk, reset,
-						 auto3, manual, sw1, sw2, sw3,
-						 Estado_1, Estado_2, Estado_3, Estado_4, en1, en2, en3, en4);
+						 start, manual, sw1, sw2, sw3,
+					en1, en2, en3, en4, Estado_1, Estado_2, Estado_3, Estado_4);
 
 					 
 logic en1,en2,en3,en4;
@@ -256,7 +257,7 @@ logic [6:0] Entrada_Deco6;
 
 always_ff @(posedge clk) begin
 
-if(Estado_3 ==1) begin 
+if(Estado_3 == 1) begin 
 								
 								Entrada_Deco1 <= Exponente_suma[7:4];
 							   Entrada_Deco2 <= Exponente_suma[3:0];
