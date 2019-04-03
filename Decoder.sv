@@ -19,7 +19,7 @@ module Decoder( input [3:0] values, output[6:0] leds);
 		4'b1101:   segments = 7'b1000010 ;
 		4'b1110:   segments = 7'b0110000 ;
 		4'b1111:   segments = 7'b0111000 ;
-		default:   segments = 7'b0000000 ;
+		default:   segments = 7'b1111111 ;
 	endcase
 	
 	assign leds = segments;

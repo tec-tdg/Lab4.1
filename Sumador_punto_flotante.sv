@@ -1,7 +1,7 @@
 module Sumador_punto_flotante #(N = 32) ( 
 														input logic clk_maquina,
 														input logic sw1, sw2,sw3, //switches
-														input logic reset, manual,start, // modos
+														input logic reset, manual,auto, // modos
 														
 														output logic Signo_suma, //signo del resultado
 														output logic Estado_1,Estado_2,Estado_3,Estado_4,//Estados de la máquina de estados
@@ -20,18 +20,19 @@ assign entrada_b = 32'b0_00000001_00000000000000001000000;
 logic [31:0] salida_fase_0_a, salida_fase_0_b;
 
 //Salidas del debounce, que serán usadas como entrada a la FSM
-logic output_sw1,output_sw2,output_sw3,output_auto,output_manual,output_reset,output_start;
+logic output_sw1,output_sw2,output_sw3,output_auto,output_manual,output_reset;
 
 logic clk;
 
 
 Freq_div Reloj(clk_maquina,clk);
-														
-/**Debuncer : Debounce(input  pb_1,clk,output  pb_out);*/
-/*Debounce debounce_1(sw1,clk_maquina,output_sw1);
+
+/*														
+/**Debuncer : Debounce(input  pb_1,clk,output  pb_out);
+Debounce debounce_1(sw1,clk_maquina,output_sw1);
 Debounce debounce_2(sw2,clk_maquina,output_sw2);
 Debounce debounce_3(sw3,clk_maquina,output_sw3);
-Debounce debounce_4(auto3,clk_maquina,output_auto);
+Debounce debounce_4(auto,clk_maquina,output_auto);
 Debounce debounce_5(manual,clk_maquina,output_manual);
 Debounce debounce_6(reset,clk_maquina,output_reset);*/
 
@@ -41,17 +42,18 @@ Debounce debounce_6(reset,clk_maquina,output_reset);*/
 /**Máquina de estados 
 
 FSM_Controller( input clk, rst,
-						 input logic start, manual, sw1, sw2, sw3,
+						 input logic auto, manual, sw1, sw2, sw3, 
 						 output logic en1,en2,en3,en4,led1, led2, led3, led4);
 
 */
 
+logic en1,en2,en3,en4;
 FSM_Controller fsm(  clk, reset,
-						 start, manual, sw1, sw2, sw3,
+						 auto, manual, sw1, sw2, sw3, 
 					en1, en2, en3, en4, Estado_1, Estado_2, Estado_3, Estado_4);
 
 					 
-logic en1,en2,en3,en4;
+
 														 
 /*Se crea Reistro 1    en:Estado_1
 
@@ -255,30 +257,40 @@ logic [6:0] Entrada_Deco6;
 
 
 
-always_ff @(posedge clk) begin
+always_comb  begin
 
-if(Estado_3 == 1) begin 
+if(Estado_3 & ~Estado_4) begin 
 								
-								Entrada_Deco1 <= Exponente_suma[7:4];
-							   Entrada_Deco2 <= Exponente_suma[3:0];
-								Entrada_Deco3  <= 4'b0000;
-								Entrada_Deco4  <= 4'b0000;
-								Entrada_Deco5  <= 4'b0000;
-								Entrada_Deco6 <= 4'b0000;
-								
-								end
+	Entrada_Deco1 = exponente_prima_fase_5[7:4];
+	Entrada_Deco2 = exponente_prima_fase_5[3:0];
+	Entrada_Deco3  = 4'b0000;
+	Entrada_Deco4  = 4'b0000;
+	Entrada_Deco5  = 4'b0000;
+	Entrada_Deco6 = 4'b0000;
+	
+	end
 
 /* Decoder Ss2(Exponente_suma[3:0],Hex2); Decoder Ss3 (4'b0000,Hex3); Decoder Ss4 (4'b0000,Hex4); Decoder Ss5 (4'b0000,Hex5); Decoder Ss6 (4'b0000,Hex6);	*/													 							
+else if (Estado_3 & Estado_4) begin 
+	Entrada_Deco1 = Mantisa_suma[22:20];
+	Entrada_Deco2 = Mantisa_suma[19:16]; 
+	Entrada_Deco3  = Mantisa_suma[15:12];
+	Entrada_Deco4  = Mantisa_suma[11:8];
+	Entrada_Deco5  = Mantisa_suma[7:4];
+	Entrada_Deco6 = Mantisa_suma[3:0];
+
+end
 
 
-else begin  Entrada_Deco1 <= Mantisa_suma[22:20];
-				Entrada_Deco2 <= Mantisa_suma[19:16]; 
-				Entrada_Deco3  <= Mantisa_suma[15:12];
-				Entrada_Deco4  <= Mantisa_suma[11:8];
-				Entrada_Deco5  <= Mantisa_suma[7:4];
-				Entrada_Deco6 <= Mantisa_suma[3:0];
+else begin  
+	Entrada_Deco1 = 4'bxxxx;
+	Entrada_Deco2 = 4'bxxxx; 
+	Entrada_Deco3 = 4'bxxxx;
+	Entrada_Deco4 = 4'bxxxx;
+	Entrada_Deco5 = 4'bxxxx;
+	Entrada_Deco6 = 4'bxxxx;
 				
-				end
+end
 				
 end 				
 Decoder Ss1 (Entrada_Deco1,Hex6); 
